@@ -282,36 +282,36 @@ exports.resetPassword = async (req, res) => {
 
 
 // contact us 
-// exports.contactUs= async (req , res)=>{
-//   const { name, email, message } = req.body;
+exports.contactUs= async (req , res)=>{
+  const { name, email, message } = req.body;
 
-//   // Basic validation (You can expand this based on your needs)
-//   if (!name || !email || !message) {
-//     return res.status(400).json({ error: 'All fields are required.' });
-//   }
+  // Basic validation (You can expand this based on your needs)
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'All fields are required.' });
+  }
 
-//   // Nodemailer configuration
-//   const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//       user: process.env.EMAIL_USER, 
-//       pass: process.env.PASSWORD, 
-//     },
-//   });
+  // Nodemailer configuration
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER, 
+      pass: process.env.PASSWORD, 
+    },
+  });
 
-//   const mailOptions = {
-//     from: email,
-//     to: 'tizazab752@gmail.com',
-//     subject: `Contact Us Form - Message from ${name}`,
-//     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-//   };
+  const mailOptions = {
+    from: email,
+    to: 'tizazab752@gmail.com',
+    subject: `Contact Us Form - Message from ${name}`,
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+  };
 
-//   try {
-//     // Send email
-//     await transporter.sendMail(mailOptions);
-//     res.status(200).json({ message: 'Message sent successfully.' });
-//   } catch (error) {
-//     console.error('Error sending email:', error);
-//     res.status(500).json({ error: 'Failed to send message.' });
-//   }
-// }
+  try {
+    // Send email
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Message sent successfully.' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ error: 'Failed to send message.' });
+  }
+}
