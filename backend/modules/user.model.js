@@ -33,7 +33,13 @@ const userSchema = new mongoose.Schema({
       resetTokenExpiration: {
         type: Date,
         default: null
-      }
+      },
+    //   role:{
+    //     type:String,
+    //     enum:["user", "admin"],
+    //     default:"user",
+    //     required:true,
+    //   }
 }, {
     timestamps: true
 });
